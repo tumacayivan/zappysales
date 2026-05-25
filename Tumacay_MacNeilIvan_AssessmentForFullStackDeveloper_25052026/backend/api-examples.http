@@ -1,0 +1,57 @@
+### List users
+GET http://localhost:8080/api/users
+
+### Get user + addresses (aggregate)
+GET http://localhost:8080/api/users/1
+
+### Create user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "email": "dana.lin@example.com",
+  "firstName": "Dana",
+  "lastName": "Lin"
+}
+
+### Update user
+PUT http://localhost:8080/api/users/1
+Content-Type: application/json
+
+{
+  "email": "alice.nguyen@example.com",
+  "firstName": "Alice",
+  "lastName": "Nguyen-Smith"
+}
+
+### Add address to user
+POST http://localhost:8080/api/users/3/addresses
+Content-Type: application/json
+
+{
+  "label": "Home",
+  "street": "5 Orchard Road",
+  "city": "Singapore",
+  "state": "",
+  "postalCode": "238838",
+  "country": "Singapore"
+}
+
+### Update address
+PUT http://localhost:8080/api/users/1/addresses/1
+Content-Type: application/json
+
+{
+  "label": "Home",
+  "street": "221C Baker Street",
+  "city": "London",
+  "state": "",
+  "postalCode": "NW1 6XE",
+  "country": "United Kingdom"
+}
+
+### Delete address
+DELETE http://localhost:8080/api/users/1/addresses/2
+
+### Delete user (cascades addresses)
+DELETE http://localhost:8080/api/users/2
